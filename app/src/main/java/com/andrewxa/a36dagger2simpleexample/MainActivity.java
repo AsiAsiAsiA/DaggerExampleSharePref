@@ -1,6 +1,7 @@
 package com.andrewxa.a36dagger2simpleexample;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -16,11 +17,15 @@ import dagger.android.HasFragmentInjector;
 
 public final class MainActivity extends Activity {
 
+    // same object from App
     @Inject
-    AppDependency appDependency; // same object from App
+    AppDependency appDependency;
 
     @Inject
     ActivityDependency activityDependency;
+
+    @Inject
+    SharedPrefModule sharedPrefModule;
 /*
 
     @Inject
@@ -34,6 +39,13 @@ public final class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         activityDependency.helloMethod();
+
+//        SharedPreferences sharedPreferences = sharedPrefModule.provideSharedPreferences();
+//        SharedPreferences.Editor editor = sharedPreferences.edit();
+//        editor.putString("SharedPreferencesString","SharedPreferences string");
+//        editor.apply();
+//
+//        System.out.println(sharedPreferences.getString("SharedPreferencesString","default"));
         /*if (savedInstanceState == null) {
             addFragment(R.id.fragment_container, new MainFragment());
         }*/
